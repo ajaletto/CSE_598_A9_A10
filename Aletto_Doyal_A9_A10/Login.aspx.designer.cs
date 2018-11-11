@@ -10,7 +10,7 @@
 namespace Aletto_Doyal_A9_A10 {
     
     
-    public partial class _Default {
+    public partial class Login {
         
         /// <summary>
         /// ElecIcon control.
@@ -31,30 +31,57 @@ namespace Aletto_Doyal_A9_A10 {
         protected global::System.Web.UI.WebControls.Image FuelIcon;
         
         /// <summary>
-        /// btnMember control.
+        /// txtId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMember;
+        protected global::System.Web.UI.WebControls.TextBox txtId;
         
         /// <summary>
-        /// brnStaff control.
+        /// txtPasswd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button brnStaff;
+        protected global::System.Web.UI.WebControls.TextBox txtPasswd;
         
         /// <summary>
-        /// lblDebug control.
+        /// btnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDebug;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+        
+        /// <summary>
+        /// btnCreateId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateId;
+        
+        /// <summary>
+        /// btnExit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExit;
+        
+        /// <summary>
+        /// lbldbg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldbg;
     }
 }
