@@ -65,18 +65,25 @@ namespace Aletto_Doyal_A9_A10
 
         protected void btnCookieTryitDelete_Click(object sender, EventArgs e)
         {
-            HttpCookie myCookie = Request.Cookies["alettoTryIt"];
-            if ((myCookie == null) || (myCookie["Name"] == ""))
+            if (CaptchaCorrectLabel.Text == "Correct!")
             {
-                lblCookieTryItWarning.Text = "You don't have any cookies for this Try It page!";
+                HttpCookie myCookie = Request.Cookies["alettoTryIt"];
+                if ((myCookie == null) || (myCookie["Name"] == ""))
+                {
+                    lblCookieTryItWarning.Text = "You don't have any cookies for this Try It page!";
+                }
+                else
+                {
+                    myCookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(myCookie);
+                    lblCookieTryItWarning.Text = String.Empty;
+                    lblCookieTryit.Text = "Your username for this try it page (and only this try it page) has been successfully deleted. " +
+                        "Enter your new username into the text box and press the \"Add\" button to reset your username.";
+                }
             }
             else
             {
-                myCookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(myCookie);
-                lblCookieTryItWarning.Text = String.Empty;
-                lblCookieTryit.Text = "Your username for this try it page (and only this try it page) has been successfully deleted. " +
-                    "Enter your new username into the text box and press the \"Add\" button to reset your username.";
+                lblCookieTryItWarning.Text = "Please validate before proceeding.";
             }
         }
 
