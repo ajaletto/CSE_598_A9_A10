@@ -107,6 +107,8 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Aletto_A9_TryIt.aspx" />
+    <Content Include="App_Images\ElecIcon.jpg" />
+    <Content Include="App_Images\FuelIcon.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -187,7 +189,6 @@
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -227,7 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
