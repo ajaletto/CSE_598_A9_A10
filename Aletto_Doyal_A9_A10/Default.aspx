@@ -2,28 +2,41 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron"style="text-align:center">
-        <h1><asp:Image ID="ElecIcon" runat="server" Height="60px" ImageUrl="~/App_Images/ElecIcon.jpg" Width="44px" />
-        &nbsp;&nbsp; Welcome to the Aletto-Doyal Alternative Fuels Site &nbsp;<asp:Image ID="FuelIcon" runat="server" Height="60px" ImageUrl="~/App_Images/FuelIcon.jpg" Width="44px" />
-        </h1>
-        <p class="lead">From this site, you will be able to search for alternative and gasoline fuel sources<br />
-                        as well as allow you to identify a route that we can provide you with Electric car charging stations.
-        </p>
-       <p>
-           To use our services, we request that you create a user account.  <br />
-           The account will require a unique user name and password.  
-       </p>
-        <p>
-            Please select the &quot;Members&quot; button below to begin your adventure using our services.</p>
-        <p>
-            The Staff Onlly button is for the TA&#39;s to be able to test the complete site using our </p>
-        <p>
-            Service Directory and TryIt pages.&nbsp; The Service directory button on the Main page will be activated for Staff Only.</p>
-        <p>
-            <asp:Button ID="btnMember" runat="server" Text="Members" OnClick="btnMember_Click" />
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="brnStaff" runat="server" Text="Staff Onlly" OnClick="brnStaff_Click" />
-       </p>
-        <asp:Label ID="lblDebug" runat="server" Text="Debug stuff here" style="COLOR: red"></asp:Label>
+    <div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
+            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+            </p>
+            <p>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>
+                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+            </p>
+            <p>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>
+                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+            </p>
+            <p>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+            </p>
+        </div>
+    </div>
+
 </asp:Content>
