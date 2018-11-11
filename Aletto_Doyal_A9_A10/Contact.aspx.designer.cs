@@ -11,7 +11,7 @@ namespace Aletto_Doyal_A9_A10
 {
 
 
-    public partial class _Default
+    public partial class Contact
     {
     }
 }

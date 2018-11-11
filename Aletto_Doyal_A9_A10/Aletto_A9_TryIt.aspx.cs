@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BotDetect.Web.Mvc;
 
 namespace Aletto_Doyal_A9_A10
 {
@@ -34,24 +35,31 @@ namespace Aletto_Doyal_A9_A10
 
         protected void btnCookieTryitAdd_Click(object sender, EventArgs e)
         {
-            HttpCookie myCookies = new HttpCookie("alettoTryIt");
-            if (String.IsNullOrWhiteSpace(txtbxCookieTryitInput.Text))
+            if (CaptchaCorrectLabel.Text == "Correct!")
             {
-                lblCookieTryItWarning.Text = "You must input your username!";
+                HttpCookie myCookies = new HttpCookie("alettoTryIt");
+                if (String.IsNullOrWhiteSpace(txtbxCookieTryitInput.Text))
+                {
+                    lblCookieTryItWarning.Text = "You must input your username!";
+                }
+                else
+                {
+                    //myCookies["Value"] = txtbxCookieTryitInput.Text.ToString();
+                    myCookies.Values.Add("id", txtbxCookieTryitInput.Text);
+                    myCookies.Expires = DateTime.Now.AddDays(30d);
+                    //myCookies.Domain = "Cookie Try It";
+                    Response.Cookies.Add(myCookies);
+                    lblCookieTryItWarning.Text = String.Empty;
+                    txtbxCookieTryitInput.Text = String.Empty;
+                    lblCookieTryit.Text = "Your username for this try it page (and only this try it page) has been successfully set to \"" +
+                        myCookies.Values.Get("id").ToString() + "\". Enter your new username into the text box" +
+                        " and press the \"Add\" button to change your username to the entered information in your cookie. Otherwise, " +
+                        "press the \"Delete\" button to delete your cookie and start over.";
+                }
             }
             else
             {
-                //myCookies["Value"] = txtbxCookieTryitInput.Text.ToString();
-                myCookies.Values.Add("id",txtbxCookieTryitInput.Text);
-                myCookies.Expires = DateTime.Now.AddDays(30d);
-                //myCookies.Domain = "Cookie Try It";
-                Response.Cookies.Add(myCookies);
-                lblCookieTryItWarning.Text = String.Empty;
-                txtbxCookieTryitInput.Text = String.Empty;
-                lblCookieTryit.Text = "Your username for this try it page (and only this try it page) has been successfully set to \"" +
-                    myCookies.Values.Get("id").ToString() + "\". Enter your new username into the text box" +
-                    " and press the \"Add\" button to change your username to the entered information in your cookie. Otherwise, " +
-                    "press the \"Delete\" button to delete your cookie and start over.";
+                lblCookieTryItWarning.Text = "Please validate before proceeding.";
             }
         }
 
@@ -69,6 +77,40 @@ namespace Aletto_Doyal_A9_A10
                 lblCookieTryItWarning.Text = String.Empty;
                 lblCookieTryit.Text = "Your username for this try it page (and only this try it page) has been successfully deleted. " +
                     "Enter your new username into the text box and press the \"Add\" button to reset your username.";
+            }
+        }
+
+        protected void ValidateCaptchaButton_Click(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // initialize the Captcha validation error label
+                CaptchaIncorrectLabel.Text = "Incorrect CAPTCHA code!";
+                CaptchaIncorrectLabel.Visible = true;
+            }
+
+
+
+
+            if (IsPostBack)
+            {
+                // validate the Captcha to check we're not dealing with a bot
+                string userInput = CaptchaCodeTextBox.Text;
+                bool isHuman = ExampleCaptcha.Validate(userInput);
+                CaptchaCodeTextBox.Text = null; // clear previous user input
+
+                if (isHuman)
+                {
+                    CaptchaCorrectLabel.Visible = true;
+                    CaptchaIncorrectLabel.Visible = false;
+                    CaptchaCorrectLabel.Text = "Correct!";
+                }
+                else
+                {
+                    CaptchaIncorrectLabel.Visible = true;
+                    CaptchaCorrectLabel.Visible = false;
+                    CaptchaIncorrectLabel.Text = "Incorrect!";
+                }
             }
         }
     }

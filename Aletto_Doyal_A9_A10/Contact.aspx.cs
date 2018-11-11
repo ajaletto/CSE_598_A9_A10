@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Aletto_Doyal_A9_A10
 {
-    public partial class _Default : Page
+    public partial class Contact : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
