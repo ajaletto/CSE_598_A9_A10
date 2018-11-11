@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aletto_Doyal_A9_A10", "Aletto_Doyal_A9_A10\Aletto_Doyal_A9_A10.csproj", "{A8B3FB28-FC9D-45C5-8A7C-78DD5EEA250C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8B3FB28-FC9D-45C5-8A7C-78DD5EEA250C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B3FB28-FC9D-45C5-8A7C-78DD5EEA250C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B3FB28-FC9D-45C5-8A7C-78DD5EEA250C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B3FB28-FC9D-45C5-8A7C-78DD5EEA250C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C85A9C2-B5F2-4CBA-A87C-9C8EDBFC664A}
+	EndGlobalSection
+EndGlobal
