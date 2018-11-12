@@ -116,6 +116,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Aletto_A9_TryIt.aspx" />
+    <Content Include="App_Data\states.xml" />
     <Content Include="App_Images\ElecIcon.jpg" />
     <Content Include="App_Images\FuelIcon.jpg" />
     <Content Include="Login.aspx" />
@@ -237,9 +238,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

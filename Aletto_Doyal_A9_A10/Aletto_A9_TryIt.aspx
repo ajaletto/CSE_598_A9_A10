@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="font-size: 100px; font-weight: bolder; color: #000080">
+        <div style="font-size: 75px; font-weight: bolder; color: #000080">
             <p>
                 Anthony Aletto Assignment 9 TryIt Page
             </p>
