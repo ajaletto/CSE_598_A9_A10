@@ -50,6 +50,10 @@
     <Reference Include="BotDetect.Web.Mvc, Version=4.4.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
       <HintPath>..\packages\Captcha.4.4.0\lib\net35\BotDetect.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Encryption, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Encryption\bin\Debug\Encryption.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />

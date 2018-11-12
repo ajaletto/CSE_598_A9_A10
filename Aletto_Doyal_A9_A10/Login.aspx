@@ -11,10 +11,10 @@
                         If you are new, please enter a UserID and Password and select Create Account<br /><br />
             User ID:&nbsp;<asp:TextBox ID="txtId" runat="server" Width="284px"></asp:TextBox> <br /><br />
             
-            Password:&nbsp; <asp:TextBox ID="txtPasswd" runat="server" Width="284px"></asp:TextBox><br /><br />
+            Password:&nbsp; <asp:TextBox ID="txtPasswd" runat="server" TextMode="Password" Width="284px"></asp:TextBox><br /><br />
             
-            <asp:Button ID="btnLogin" runat="server" Text="Login" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnCreateId" runat="server" Text="Create Account" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnCreateId" runat="server" Text="Create Account" OnClick="btnCreateId_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnExit" runat="server" Text="Cancel" OnClick="btnExit_Click" />
             <br /><br />
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Members xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/CSE598/Project5/member.xsd">
+	<member>
+		<Name>Roy</Name>
+		<PwdHash>A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3</PwdHash>
+	</member>
+	<member>
+		<Name>Jill</Name>
+		<PwdHash>A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3</PwdHash>
+	</member>
+</Members>
