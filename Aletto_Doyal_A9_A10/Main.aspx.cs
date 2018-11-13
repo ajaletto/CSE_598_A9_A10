@@ -56,7 +56,7 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            //lblGetLocationOutput.Text = coordinate;
+            txtarLocationOutput.InnerText = coordinate;
         }
 
         public static string Get(string url)
