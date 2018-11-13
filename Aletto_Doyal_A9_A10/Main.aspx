@@ -48,7 +48,7 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Location <br />Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 429px;"></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 429px; color: #000000;"></textarea>
 
                     </p>
                 </div>
@@ -115,7 +115,7 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Routing Info <br /> Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 417px; "></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 417px; color: #000000;"></textarea>
 
                     </p>
                 </div>

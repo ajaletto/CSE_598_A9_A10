@@ -56,7 +56,30 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            txtarLocationOutput.InnerText = coordinate;
+            coordinate = coordinate.Replace(" ",",");
+
+            //Key to online service
+            string key = "Ainae0P5Jbzp5UAnsKLAwK3hBl6n7APKzsFygH7mSIy9djtUZYEdvkV-2GvxHjoa";
+            url = @"http://dev.virtualearth.net/REST/v1/Locations/" + coordinate + "?o=xml&includeEntityTypes=Postcode1&key=" + key;
+
+            //Encodes string for proper format when using as a URL
+            System.Web.HttpUtility.UrlEncode(url);
+
+            xmlString = Get(url);
+            XmlReader reader_2 = XmlReader.Create(new StringReader(xmlString)); //Create a reader for the returning XML document
+            boolean = false; //Flag used in exiting loop
+            string fZipcode = String.Empty;
+
+            //Loop used to locate section of XML document that contains the data needed
+            while (!boolean && reader_2.Read())
+            {
+                if (reader_2.LocalName == "PostalCode")
+                {
+                    boolean = true;
+                    fZipcode = reader_2.ReadElementContentAsString();
+                }
+            }
+            txtarLocationOutput.InnerText = fZipcode;
         }
 
         public static string Get(string url)
