@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Staff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/CSE598/CSE_598_A9_A10/Aletto_Doyal_A9_A10/App_Data/staff.xsd">
+  <member>
+    <Name>Roy</Name>
+    <PwdHash>A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3</PwdHash>
+  </member>
+  <member>
+    <Name>Jill</Name>
+    <PwdHash>A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3</PwdHash>
+  </member>
+</Staff>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.XPath;
 
 
@@ -68,15 +69,46 @@ namespace Aletto_Doyal_A9_A10
                 lbldbg.Text = "INVALID USER NAME ENTERED... Check spelling and captilization";
                 return;
             }
+
+            Response.Redirect("Main.aspx");
         }
 
         protected void btnCreateId_Click(object sender, EventArgs e)
         {
-            // steps fro create
+            // steps for create
             // 1) Verify user name is unique (Not on the list)
             // 2) add credentials to the members xml file
             // set credentials in teh Session and redirect to Main Page
-        
+
+            if (ValidateUserName(txtId.Text, AccessType))
+            {
+                lbldbg.Text = "USER ID Already exists... Please enter a new User Id";
+                return;
+            }
+
+            // Add to the xml file
+            string xmlFileName = @"App_data\Members.xml";
+            string SearchKey = @"//Name";
+            // if access is staff, reset the file name and searchkey
+            if (AccessType == accessType.Staff)
+            {
+                xmlFileName = @"App_data\Staff.xml";
+            }
+            string xmlPath = Server.MapPath("~");
+
+            string xmlFullPath = Path.Combine(xmlPath, xmlFileName);
+
+            XDocument doc = XDocument.Load(xmlFullPath);
+            XElement root = new XElement("member");
+            root.Add(new XElement("Name", txtId.Text));
+            root.Add(new XElement("PwdHash", Encrypt.GenerateSHA256String(txtPasswd.Text)));
+            doc.Element("Members").Add(root);
+            doc.Save(xmlFullPath);
+
+            // move on to the main page
+            Response.Redirect("Main.aspx");
+
+
         }
 
         protected bool ValidateUserName(string userName, accessType access)
@@ -84,12 +116,11 @@ namespace Aletto_Doyal_A9_A10
             // this function returns true if User Name Exists
             bool result = false;
             string xmlFileName = @"App_data\Members.xml";
-            string SearchKey = "Members";
+            string SearchKey = @"//Name";
             // if access is staff, reset the file name and searchkey
             if (access == accessType.Staff)
             {
                 xmlFileName = @"App_data\Staff.xml";
-                SearchKey = "Staff";
             }
             string xmlPath = Server.MapPath("~");
 
@@ -102,7 +133,7 @@ namespace Aletto_Doyal_A9_A10
                 XPathDocument xDoc = new XPathDocument(xmlFullPath);
 
                 var nav = xDoc.CreateNavigator();
-                var nodes = nav.Evaluate(@"//Name");
+                var nodes = nav.Evaluate(SearchKey);
                 foreach (XPathNavigator node in (XPathNodeIterator)nodes)
                 {
                     if (node.InnerXml == userName)
