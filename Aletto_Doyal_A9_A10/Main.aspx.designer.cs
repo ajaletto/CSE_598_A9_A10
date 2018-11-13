@@ -130,6 +130,15 @@ namespace Aletto_Doyal_A9_A10 {
         protected global::System.Web.UI.WebControls.Button btnGetAltFuelAtLocation;
         
         /// <summary>
+        /// txtarLocationOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtarLocationOutput;
+        
+        /// <summary>
         /// lblFromAddressRoute control.
         /// </summary>
         /// <remarks>
@@ -299,5 +308,14 @@ namespace Aletto_Doyal_A9_A10 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGetAltFuelStationsAlongRoute;
+        
+        /// <summary>
+        /// txtarRouteOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtarRouteOutput;
     }
 }

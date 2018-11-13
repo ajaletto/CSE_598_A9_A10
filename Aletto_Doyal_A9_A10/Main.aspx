@@ -48,37 +48,34 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Location <br />Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 429px; "></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 429px;"></textarea>
 
                     </p>
                 </div>
 
 
                 <hr />
-                <div class="col-lg-6" style="border: 5px solid #C0C0C0; background-color: #008080;">
+                <div class="col-lg-6" style="border: 5px solid #C0C0C0; background-color: #008080; text-align: center;">
                     <h2 style="border: 7px inset #000000; font-size: 40px; background-color: #808080; font-weight: bold; color: #000000; text-align: center;">Find Alternative Fuel Stations Along a Route</h2>
-
-
-
                     <div class="col-md-3" style="color: #FFFFFF; text-align: center;">
                         <h3 style="font-size: 32px; font-weight: bold; text-decoration: underline; text-align: center;">From:</h3>
-                        <p style="font-size: medium; text-align: center;">
+                        <p style="font-size: medium; min-width: 100%;">
                             <asp:Label ID="lblFromAddressRoute" runat="server" Text="Address:"></asp:Label>
-                            <asp:TextBox ID="txtbxFromAddressRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>                            
+                            <asp:TextBox ID="txtbxFromAddressRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>                            
                             <br />
                             <br />
                             <asp:Label ID="lblFromCityRoute" runat="server" Text="City:"></asp:Label><br />
-                            <asp:TextBox ID="txtbxFromCityRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>                            
+                            <asp:TextBox ID="txtbxFromCityRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>                            
                             <br />
                             <br />
                             <asp:Label ID="lblFromStateRoute" runat="server" Text="State:"></asp:Label>
-                            <asp:DropDownList ID="drpdnFromStateRoute" runat="server" DataSourceID="XmlDataSource1" DataTextField="name" DataValueField="name" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black">
+                            <asp:DropDownList ID="drpdnFromStateRoute" runat="server" DataSourceID="XmlDataSource1" DataTextField="name" DataValueField="name" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300">
                             </asp:DropDownList>
                             <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/App_Data/states.xml"></asp:XmlDataSource>                            
                             <br />
                             <br />
                             <asp:Label ID="lblFromZipcodeRoute" runat="server" Text="Zipcode:"></asp:Label>
-                            <asp:TextBox ID="txtbxFromZipcodeRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>                            
+                            <asp:TextBox ID="txtbxFromZipcodeRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>                            
                             <br />
                         </p>
                     </div>
@@ -87,23 +84,23 @@
 
                     <div class="col-md-3 col-md-offset-3" style="color: #FFFFFF; text-align: center;">
                         <h3 style="font-size: 32px; font-weight: bold; text-decoration: underline; text-align: center;">To:</h3>
-                        <p style="font-size: medium; text-align: center;">
+                        <p style="font-size: medium; min-width: 100%;">
                             <asp:Label ID="lblToAddressRoute" runat="server" Text="Address:"></asp:Label>
-                            <asp:TextBox ID="txtbxToAddressRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>                            
+                            <asp:TextBox ID="txtbxToAddressRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>                            
                             <br />
                             <br />
                             <asp:Label ID="lblToCityRoute" runat="server" Text="City:"></asp:Label><br />
-                            <asp:TextBox ID="txtbxToCityRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>
+                            <asp:TextBox ID="txtbxToCityRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>
                             <br />
                             <br />
                             <asp:Label ID="lblToStateRoute" runat="server" Text="State:"></asp:Label>
-                            <asp:DropDownList ID="drpdnToStateRoute" runat="server" DataSourceID="XmlDataSource1" DataTextField="name" DataValueField="name" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black">
+                            <asp:DropDownList ID="drpdnToStateRoute" runat="server" DataSourceID="XmlDataSource1" DataTextField="name" DataValueField="name" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300">
                             </asp:DropDownList>
                             <asp:XmlDataSource ID="XmlDataSource3" runat="server" DataFile="~/App_Data/states.xml"></asp:XmlDataSource>
                             <br />
                             <br />
                             <asp:Label ID="lblToZipcodeRoute" runat="server" Text="Zipcode:"></asp:Label>
-                            <asp:TextBox ID="txtbxToZipcodeRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black"></asp:TextBox>
+                            <asp:TextBox ID="txtbxToZipcodeRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>
                             <br />
                             <br />
                         </p>
@@ -118,7 +115,7 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Routing Info <br /> Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 417px; "></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 417px; "></textarea>
 
                     </p>
                 </div>
