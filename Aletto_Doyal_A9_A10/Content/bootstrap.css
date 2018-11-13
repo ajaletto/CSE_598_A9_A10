@@ -11,6 +11,8 @@ html {
 }
 body {
   margin: 0;
+  margin-left:0px;
+  margin-right:0px;
 }
 article,
 aside,
@@ -116,6 +118,7 @@ textarea {
   margin: 0;
   font: inherit;
   color: inherit;
+  width: 100%;
 }
 button {
   overflow: visible;
@@ -1603,14 +1606,14 @@ pre code {
   }
 }
 .container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 0px;
+  margin-left: 0px;
   padding-left: 0px;
   padding-right: 0px
 }
@@ -1619,6 +1622,8 @@ pre code {
   min-height: 1px;
   padding-right: 0px;
   padding-left: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -5282,7 +5287,7 @@ button.list-group-item:focus {
 }
 button.list-group-item {
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 .list-group-item.disabled,
 .list-group-item.disabled:hover,
