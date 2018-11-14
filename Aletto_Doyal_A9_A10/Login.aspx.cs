@@ -88,7 +88,7 @@ namespace Aletto_Doyal_A9_A10
 
             // Add to the xml file
             string xmlFileName = @"App_data\Members.xml";
-            string SearchKey = @"//Name";
+            string SearchKey = @"member";
             // if access is staff, reset the file name and searchkey
             if (AccessType == accessType.Staff)
             {
@@ -99,7 +99,7 @@ namespace Aletto_Doyal_A9_A10
             string xmlFullPath = Path.Combine(xmlPath, xmlFileName);
 
             XDocument doc = XDocument.Load(xmlFullPath);
-            XElement root = new XElement("member");
+            XElement root = new XElement(SearchKey);
             root.Add(new XElement("Name", txtId.Text));
             root.Add(new XElement("PwdHash", Encrypt.GenerateSHA256String(txtPasswd.Text)));
             doc.Element("Members").Add(root);
@@ -157,12 +157,12 @@ namespace Aletto_Doyal_A9_A10
             // this function returns true if User Name Exists
             bool result = false;
             string xmlFileName = @"App_data\Members.xml";
-            string SearchKey = "Members";
+            //string SearchKey = "Members";
             // if access is staff, reset the file name and searchkey
             if (access == accessType.Staff)
             {
                 xmlFileName = @"App_data\Staff.xml";
-                SearchKey = "Staff";
+               // SearchKey = "Staff";
             }
             string xmlPath = Server.MapPath("~");
 
