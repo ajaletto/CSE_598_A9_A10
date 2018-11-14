@@ -8,11 +8,11 @@
     </head>
     <h1 class="col-lg-12" style="border: 8px ridge #000000; font-family: Bahnschrift; font-size: 75px; font-weight: bolder; color: #00004D; background-color: #C0C0C0; display: block; text-align: center;" aria-haspopup="False" role="banner">
         Aletto and Doyal's Alternative Gas Station Lookup Services
-        <asp:Button ID="btnServiceDirectory" runat="server" Text="Service Directory" Font-Size="XX-Large" CssClass="center-block"  BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Height="100px" />
+        <asp:Button ID="btnServiceDirectory" runat="server" Text="Service Directory" Font-Size="XX-Large" CssClass="center-block"  BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Height="100px" OnClick="btnServiceDirectory_Click" />
         <br />
     </h1>
     <hr />
-    <body style="background-color: #EEEEEE; border: thin solid #000000">        
+    <body>        
                
         <div class="row">
 
@@ -48,7 +48,7 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Location <br />Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 429px; color: #000000;"></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 429px; color: #000000;"></textarea>
 
                     </p>
                 </div>
@@ -105,17 +105,20 @@
                             <br />
                         </p>
                     </div>
-                    <div class="col-md-6" style="text-align: center">
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <p style="font-size: medium; text-align: center;">
-                            <asp:Button ID="btnGetAltFuelStationsAlongRoute" runat="server" Text="Get Fuel Stations Along Route" BorderColor="Black" BorderStyle="Solid" BorderWidth="5" Font-Bold="True" />
+                            <asp:Label ID="lblIntervalRoute" runat="server" Text="Interval Between Stations:" ForeColor="White"></asp:Label><br />
+                            <asp:TextBox ID="txtbxIntervalRoute" runat="server" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" ForeColor="Black" Width="300"></asp:TextBox>
+                            <br />
+                            <br />
+                            <asp:Button ID="btnGetAltFuelStationsAlongRoute" runat="server" Text="Get Fuel Stations Along Route" BorderColor="Black" BorderStyle="Solid" BorderWidth="5" Font-Bold="True" OnClick="btnGetAltFuelStationsAlongRoute_Click" />
                         </p>
-                    </div>
                 </div>
                 <div class="col-lg-6" style="margin: 0px; border: 5px solid #C0C0C0; background-color: #008080; color: #FFFFFF; overflow: visible;">
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Routing Info <br /> Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: center; min-width: 95%; height: 417px; color: #000000;"></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 508px; color: #000000;"></textarea>
 
                     </p>
                 </div>
