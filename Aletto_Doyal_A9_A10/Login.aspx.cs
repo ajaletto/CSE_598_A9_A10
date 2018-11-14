@@ -48,6 +48,25 @@ namespace Aletto_Doyal_A9_A10
             // 2) Verify Password
             // 3) Set credentials in the Session and redirect to main page
 
+            // validate all fields are populated
+            lbldbg.Text = "";
+            if (txtId.Text == "")
+                lbldbg.Text = "    No User Name Entered";
+            if (txtPasswd.Text == "")
+                lbldbg.Text += "    No Password Entered";
+            if (txtCaptcha.Text == "")
+                lbldbg.Text += "    No Captcha Entered";
+            if (lbldbg.Text != "")
+                return;
+
+            // validate captcha
+            if (!(ExampleCaptcha.Validate(txtCaptcha.Text)))
+            {
+                lbldbg.Text = "    Captcha does not match... Please reenter Password and Captcha ";
+                return;
+            }
+
+
             // Get User Name and  Verify
             string UserName = txtId.Text;
 
@@ -79,6 +98,24 @@ namespace Aletto_Doyal_A9_A10
             // 1) Verify user name is unique (Not on the list)
             // 2) add credentials to the members xml file
             // set credentials in teh Session and redirect to Main Page
+            // validate all fields are populated
+            lbldbg.Text = "";
+            if (txtId.Text == "")
+                lbldbg.Text = "    No User Name Entered";
+            if (txtPasswd.Text == "")
+                lbldbg.Text += "    No Password Entered";
+            if (txtCaptcha.Text == "")
+                lbldbg.Text += "    No Captcha Entered";
+            if (lbldbg.Text != "")
+                return;
+
+            // validate captcha
+            if (!(ExampleCaptcha.Validate(txtCaptcha.Text)))
+            {
+                lbldbg.Text = "    Captcha does not match... Please reenter Password and Captcha ";
+                return;
+            }
+
 
             if (ValidateUserName(txtId.Text, AccessType))
             {
