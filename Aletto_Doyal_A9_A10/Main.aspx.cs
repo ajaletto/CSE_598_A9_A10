@@ -159,7 +159,7 @@ namespace Aletto_Doyal_A9_A10
 
         protected void btnServiceDirectory_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Roy_A9_TryIt.aspx");
         }
 
         protected void btnGetAltFuelStationsAlongRoute_Click(object sender, EventArgs e)

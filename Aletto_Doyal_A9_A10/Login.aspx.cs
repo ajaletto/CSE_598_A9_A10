@@ -69,13 +69,13 @@ namespace Aletto_Doyal_A9_A10
 
             // Get User Name and  Verify
             string UserName = txtId.Text;
-
+            string Hash = null;
             bool bUserName = ValidateUserName(UserName, AccessType);
             if (bUserName)
             {
                 // get password and hash
                 string Password = txtPasswd.Text;
-                string Hash = Encrypt.GenerateSHA256String(Password);
+                Hash = Encrypt.GenerateSHA256String(Password);
                 bool bPasswd = ValidateUserPasswrod(UserName, Hash, AccessType);
                 if (!bPasswd)
                 {
@@ -88,7 +88,11 @@ namespace Aletto_Doyal_A9_A10
                 lbldbg.Text = "INVALID USER NAME ENTERED... Check spelling and captilization";
                 return;
             }
-
+            // Load the session Data
+            SessionObject obj = (SessionObject)Session["User"];
+            obj.Name = UserName;
+            obj.Hash = Hash;
+            Session["User"] = obj;
             Response.Redirect("Main.aspx");
         }
 
@@ -141,6 +145,13 @@ namespace Aletto_Doyal_A9_A10
             root.Add(new XElement("PwdHash", Encrypt.GenerateSHA256String(txtPasswd.Text)));
             doc.Element("Members").Add(root);
             doc.Save(xmlFullPath);
+
+
+            // Load the session Data
+            SessionObject obj = (SessionObject)Session["User"];
+            obj.Name = txtId.Text;
+            obj.Hash = txtPasswd.Text;
+            Session["User"] = obj;
 
             // move on to the main page
             Response.Redirect("Main.aspx");
