@@ -122,7 +122,11 @@
     <Content Include="Aletto_A9_TryIt.aspx" />
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Images\ElecIcon.jpg" />
+    <Content Include="App_Images\electricFuelSign.jpg" />
     <Content Include="App_Images\FuelIcon.jpg" />
+    <Content Include="App_Images\greenWallpaper.jpg" />
+    <Content Include="App_Images\Road.jpg" />
+    <Content Include="electric-car.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
