@@ -6,13 +6,13 @@
     <head>
         <title>Aletto and Doyal's Alternative Gas Station Lookup Service</title>
     </head>
-    <h1 class="col-lg-12" style="border: 8px ridge #000000; font-family: Bahnschrift; font-size: 75px; font-weight: bolder; color: #00004D; background-color: #C0C0C0; display: block; text-align: center;" aria-haspopup="False" role="banner">
+    <h1 class="col-lg-12" style="border: 8px ridge #000000; font-family: Bahnschrift; font-size: 75px; font-weight: bolder; color: #00004D; background-color: #DAF1D8; display: block; text-align: center;" aria-haspopup="False" role="banner">
         Aletto and Doyal's Alternative Gas Station Lookup Services
         <asp:Button ID="btnServiceDirectory" runat="server" Text="Service Directory" Font-Size="XX-Large" CssClass="center-block"  BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Height="100px" OnClick="btnServiceDirectory_Click" />
         <br />
     </h1>
     <hr />
-    <body>        
+    <body style="background-color: #FFFFFF; background-image: url('http://localhost:50574/App_Images/Road.jpg'); ">        
                
         <div class="row">
 
@@ -48,7 +48,7 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Location <br />Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 429px; color: #000000;"></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarLocationOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 429px; color: #000000; font-size: large;"></textarea>
 
                     </p>
                 </div>
@@ -118,9 +118,13 @@
                     <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Routing Info <br /> Output</h2>
                     <p style="font-size: medium; text-align: center;">
                         
-                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 508px; color: #000000;"></textarea>
+                        <textarea runat="server" class="container-fluid" id="txtarRouteOutput" cols="100" name="S1" rows="2" style="margin: 0px; text-align: left; min-width: 95%; height: 508px; color: #000000; font-size: large;"></textarea>
 
                     </p>
+                </div>
+                <div class="col-lg-12" style="text-align: center; font-size: xx-large;">
+                    <br />
+                    <asp:Button ID="exit" runat="server" Text="Exit" BorderColor="Black" BorderStyle="Solid" BorderWidth="5" Font-Bold="True"  Height="100" />
                 </div>
             </div>
     </body>

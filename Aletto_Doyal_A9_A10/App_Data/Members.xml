@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Members xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/CSE598/CSE_598_A9_A10/Aletto_Doyal_A9_A10/App_Data/member.xsd">
   <member>
     <Name>Roy</Name>
@@ -15,5 +15,9 @@
   <member>
     <Name>Tony</Name>
     <PwdHash>03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4</PwdHash>
+  </member>
+  <member>
+    <Name>ajaletto</Name>
+    <PwdHash>FD1945A58D26BA9DF8CBB1C2FCA09BCD5560EB45C7DB5190005A22EAA1E07175</PwdHash>
   </member>
 </Members>

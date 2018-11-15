@@ -245,7 +245,6 @@ namespace Aletto_Doyal_A9_A10
                 xmlString = Get(url);
                 XmlReader reader_2 = XmlReader.Create(new StringReader(xmlString)); //Create a reader for the returning XML document
                 boolean = false; //Flag used in exiting loop
-                string fZipcode = String.Empty; //Zipcode sent to alt fuel station service
 
                 //Loop used to locate section of XML document that contains the data needed
                 while (!boolean && reader_2.Read())
@@ -258,14 +257,81 @@ namespace Aletto_Doyal_A9_A10
                 }
             } //End for loop getting zipcodes
 
+            Int32 count = 0;
+            double radMark = .1;
+            double dInterval = 0;
+            Double.TryParse(interval, out dInterval);
+            string result = String.Empty;
 
-            foreach(string zip in zipcodes)
+            while(count < zipcodes.Length)
             {
-                txtarRouteOutput.InnerText += zip + "\n";
+
+                //Make sure no zipcodes came back null
+                while(zipcodes[count] == null)
+                {
+                    count++;
+                }
+
+                
+                
+                //Make url for use in call to fuel service API
+                url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + zipcodes[count] + "&Radius=" + ((Int32)(radMark * dInterval)).ToString()  + "&FuelTypes=ELEC";
+
+                //Encodes string for proper format when using as a URL
+                System.Web.HttpUtility.UrlEncode(url);
+
+                //Make call to alt fuel service
+                string jsonString = Get(url);
+
+                //Visual studio does not recognize as a json object. 
+                //Create a xml read to pull out the json string
+                XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
+                boolean = false; //Flag used in exiting loop
+
+                //Loop used to locate section of XML document that contains the data needed
+                while (!boolean && reader_3.Read())
+                {
+                    if (reader_3.LocalName == "string")
+                    {
+                        boolean = true;
+                        jsonString = reader_3.ReadElementContentAsString();
+                    }
+                }
+
+                dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
+                var tempStations = layer1.AFStations;
+
+                if (tempStations.Count == 0 && radMark <= .6)
+                {
+                    radMark += .1;
+                    continue;
+                }
+                else
+                {
+                    radMark = .1;
+                    count++;
+                }
+
+                //Loop that fetches all the applicable data
+                foreach (var station in tempStations)
+                {
+                    result += ((string)station.Name).ToUpper() + Environment.NewLine;
+                    result += "        " + (string)station.Address + Environment.NewLine;
+                    result += "        " + (string)station.City + ", " + (string)station.State + "  ";
+                    result += "        " + (string)station.Zip + Environment.NewLine;
+                    result += "        Phone :  " + (string)station.Phone + Environment.NewLine;
+                    result += "        Acess:  " + (string)station.Access + Environment.NewLine;
+                    result += "        Fuel Type:  " + (string)station.FuelType + Environment.NewLine;
+                    result += "        Distance(mi):  " + station.Distance.ToString() + Environment.NewLine;
+                    result += "\n";
+                    break;
+                }
+
+                
             }
 
+            txtarRouteOutput.InnerText += result + "\n";
 
-            
         }
     }
 }
