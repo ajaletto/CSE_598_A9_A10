@@ -87,7 +87,6 @@ namespace Aletto_Doyal_A9_A10
 
             // Get User Name and  Verify
             string UserName = txtId.Text;
-
             bool bUserName = ValidateUserName(UserName, AccessType);
             string Hash = String.Empty;
             if (bUserName)
@@ -115,6 +114,12 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("passHash", Hash);
             cookie.Expires = DateTime.Now.AddDays(1d);
             Response.Cookies.Add(cookie);
+
+            // Load the session Data
+            SessionObject obj = (SessionObject)Session["User"];
+            obj.Name = UserName;
+            obj.Hash = Hash;
+            Session["User"] = obj;
             Response.Redirect("Main.aspx");
         }
 
@@ -167,6 +172,7 @@ namespace Aletto_Doyal_A9_A10
             doc.Element("Members").Add(root);
             doc.Save(xmlFullPath);
 
+
             //Grab the cookie info
             HttpCookie cookie = new HttpCookie("AD_598");
             cookie.Values.Add("SessionId", Session.SessionID);
@@ -174,6 +180,12 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("passHash", Hash);
             cookie.Expires = DateTime.Now.AddDays(1d);
             Response.Cookies.Add(cookie);
+
+            // Load the session Data
+            SessionObject obj = (SessionObject)Session["User"];
+            obj.Name = txtId.Text;
+            obj.Hash = txtPasswd.Text;
+            Session["User"] = obj;
 
             // move on to the main page
             Response.Redirect("Main.aspx");

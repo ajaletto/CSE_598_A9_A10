@@ -150,6 +150,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Main.aspx" />
     <Content Include="Members.xml" />
+    <Content Include="Roy_A9_TryIt.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -228,6 +229,13 @@
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roy_A9_TryIt.aspx.cs">
+      <DependentUpon>Roy_A9_TryIt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roy_A9_TryIt.aspx.designer.cs">
+      <DependentUpon>Roy_A9_TryIt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
