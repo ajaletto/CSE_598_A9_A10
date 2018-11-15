@@ -49,6 +49,24 @@ namespace Aletto_Doyal_A9_A10 {
         protected global::System.Web.UI.WebControls.TextBox txtPasswd;
         
         /// <summary>
+        /// ExampleCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BotDetect.Web.UI.WebFormsSimpleCaptcha ExampleCaptcha;
+        
+        /// <summary>
+        /// txtCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCaptcha;
+        
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>

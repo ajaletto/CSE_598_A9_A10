@@ -120,6 +120,8 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Aletto_A9_TryIt.aspx" />
+    <Content Include="App_Data\Members.xml" />
+    <Content Include="App_Data\Staff.xml" />
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Images\ElecIcon.jpg" />
     <Content Include="App_Images\electricFuelSign.jpg" />
@@ -147,6 +149,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Main.aspx" />
+    <Content Include="Members.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -176,6 +179,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Staff.xml" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -200,7 +204,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
