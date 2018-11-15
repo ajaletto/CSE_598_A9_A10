@@ -54,15 +54,13 @@ namespace Aletto_Doyal_A9_A10
                 lbldbg.Text = "    No User Name Entered";
             if (txtPasswd.Text == "")
                 lbldbg.Text += "    No Password Entered";
-            if (txtCaptcha.Text == "")
-                lbldbg.Text += "    No Captcha Entered";
             if (lbldbg.Text != "")
                 return;
 
             // validate captcha
-            if (!(ExampleCaptcha.Validate(txtCaptcha.Text)))
+            if (!(lblCaptchaCorrect.Text == "Correct!"))
             {
-                lbldbg.Text = "    Captcha does not match... Please reenter Password and Captcha ";
+                lbldbg.Text = "    Please validate Captcha.";
                 return;
             }
 
@@ -104,15 +102,13 @@ namespace Aletto_Doyal_A9_A10
                 lbldbg.Text = "    No User Name Entered";
             if (txtPasswd.Text == "")
                 lbldbg.Text += "    No Password Entered";
-            if (txtCaptcha.Text == "")
-                lbldbg.Text += "    No Captcha Entered";
             if (lbldbg.Text != "")
                 return;
 
             // validate captcha
-            if (!(ExampleCaptcha.Validate(txtCaptcha.Text)))
+            if (!(lblCaptchaCorrect.Text == "Correct!"))
             {
-                lbldbg.Text = "    Captcha does not match... Please reenter Password and Captcha ";
+                lbldbg.Text = "    Please validate Captcha.";
                 return;
             }
 
@@ -235,6 +231,39 @@ namespace Aletto_Doyal_A9_A10
 
             return result;
         }
-        
+
+        protected void ValidateCaptchaButton_Click(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // initialize the Captcha validation error label
+                lblCaptchaCorrect.Text = "Incorrect CAPTCHA code!";
+                lblCaptchaIncorrect.Visible = true;
+            }
+
+
+
+
+            if (IsPostBack)
+            {
+                // validate the Captcha to check we're not dealing with a bot
+                string userInput = txtCaptcha.Text;
+                bool isHuman = ExampleCaptcha.Validate(userInput);
+                txtCaptcha.Text = null; // clear previous user input
+
+                if (isHuman)
+                {
+                    lblCaptchaCorrect.Visible = true;
+                    lblCaptchaIncorrect.Visible = false;
+                    lblCaptchaCorrect.Text = "Correct!";
+                }
+                else
+                {
+                    lblCaptchaIncorrect.Visible = true;
+                    lblCaptchaCorrect.Visible = false;
+                    lblCaptchaIncorrect.Text = "Incorrect!";
+                }
+            }
+        }
     }
 }
