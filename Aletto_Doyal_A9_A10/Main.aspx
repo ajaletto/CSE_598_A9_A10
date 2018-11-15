@@ -12,7 +12,7 @@
         <br />
     </h1>
     <hr />
-    <body style="background-color: #FFFFFF; background-image: url('http://localhost:50574/App_Images/Road.jpg'); ">        
+    <body style="background-color: #FFFFFF; background-image: url('App_Images/Road.jpg'); ">        
                
         <div class="row">
 

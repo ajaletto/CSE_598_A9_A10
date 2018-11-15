@@ -34,6 +34,26 @@ namespace Aletto_Doyal_A9_A10
                 lbldbg.Text = " Member Access :  Session ID = " + Session.SessionID;
                 btnLogin.Text = "Member Login";
             }
+
+            if (Request.Browser.Cookies && !IsPostBack)
+            {
+                HttpCookie hasCookie = Request.Cookies["AD_598"];
+                if ((hasCookie == null) || (hasCookie["Name"] == ""))
+                {
+                    HttpCookie noCookie = new HttpCookie("AD_598");
+                    noCookie.Values.Add("SessionId", Session.SessionID);
+                    noCookie.Expires = DateTime.Now.AddDays(1d);
+                    Response.Cookies.Add(noCookie);
+                }
+                else
+                {
+                    if(hasCookie.Values.Get("SessionId").ToString() == Session.SessionID)
+                    {
+                        //Response.Redirect("Main.aspx");
+                    }
+
+                }
+            }
         }
 
         protected void btnExit_Click(object sender, EventArgs e)
@@ -69,11 +89,12 @@ namespace Aletto_Doyal_A9_A10
             string UserName = txtId.Text;
 
             bool bUserName = ValidateUserName(UserName, AccessType);
+            string Hash = String.Empty;
             if (bUserName)
             {
                 // get password and hash
                 string Password = txtPasswd.Text;
-                string Hash = Encrypt.GenerateSHA256String(Password);
+                Hash = Encrypt.GenerateSHA256String(Password);
                 bool bPasswd = ValidateUserPasswrod(UserName, Hash, AccessType);
                 if (!bPasswd)
                 {
@@ -87,6 +108,13 @@ namespace Aletto_Doyal_A9_A10
                 return;
             }
 
+            //Grab the cookie info
+            HttpCookie cookie = new HttpCookie("AD_598");
+            cookie.Values.Add("SessionId", Session.SessionID);
+            cookie.Values.Add("username", UserName);
+            cookie.Values.Add("passHash", Hash);
+            cookie.Expires = DateTime.Now.AddDays(1d);
+            Response.Cookies.Add(cookie);
             Response.Redirect("Main.aspx");
         }
 
@@ -130,13 +158,22 @@ namespace Aletto_Doyal_A9_A10
             string xmlPath = Server.MapPath("~");
 
             string xmlFullPath = Path.Combine(xmlPath, xmlFileName);
+            string Hash = Encrypt.GenerateSHA256String(txtPasswd.Text);
 
             XDocument doc = XDocument.Load(xmlFullPath);
             XElement root = new XElement(SearchKey);
             root.Add(new XElement("Name", txtId.Text));
-            root.Add(new XElement("PwdHash", Encrypt.GenerateSHA256String(txtPasswd.Text)));
+            root.Add(new XElement("PwdHash", Hash));
             doc.Element("Members").Add(root);
             doc.Save(xmlFullPath);
+
+            //Grab the cookie info
+            HttpCookie cookie = new HttpCookie("AD_598");
+            cookie.Values.Add("SessionId", Session.SessionID);
+            cookie.Values.Add("username", txtId.Text);
+            cookie.Values.Add("passHash", Hash);
+            cookie.Expires = DateTime.Now.AddDays(1d);
+            Response.Cookies.Add(cookie);
 
             // move on to the main page
             Response.Redirect("Main.aspx");
