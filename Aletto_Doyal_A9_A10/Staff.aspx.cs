@@ -105,29 +105,9 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            //Make url for use in call to fuel service API
-            url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
+            AFServices.ServiceClient proxy = new AFServices.ServiceClient();
+            string jsonString = proxy.GetAFStations(fZipcode, "ELEC", Convert.ToInt32(radius));
 
-            //Encodes string for proper format when using as a URL
-            System.Web.HttpUtility.UrlEncode(url);
-
-            //Make call to alt fuel service
-            string jsonString = Get(url);
-
-            //Visual studio does not recognize as a json object. 
-            //Create a xml read to pull out the json string
-            XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
-            boolean = false; //Flag used in exiting loop
-
-            //Loop used to locate section of XML document that contains the data needed
-            while (!boolean && reader_3.Read())
-            {
-                if (reader_3.LocalName == "string")
-                {
-                    boolean = true;
-                    jsonString = reader_3.ReadElementContentAsString();
-                }
-            }
 
             dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
             var tempStations = layer1.AFStations;
@@ -256,6 +236,8 @@ namespace Aletto_Doyal_A9_A10
             double dInterval = 0;
             Double.TryParse(interval, out dInterval);
             string result = String.Empty;
+            AFServices.ServiceClient proxy = new AFServices.ServiceClient();
+
 
             while (count < zipcodes.Length)
             {
@@ -266,31 +248,8 @@ namespace Aletto_Doyal_A9_A10
                     count++;
                 }
 
-
-
-                //Make url for use in call to fuel service API
-                url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + zipcodes[count] + "&Radius=" + ((Int32)(radMark * dInterval)).ToString() + "&FuelTypes=ELEC";
-
-                //Encodes string for proper format when using as a URL
-                System.Web.HttpUtility.UrlEncode(url);
-
-                //Make call to alt fuel service
-                string jsonString = Get(url);
-
-                //Visual studio does not recognize as a json object. 
-                //Create a xml read to pull out the json string
-                XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
-                boolean = false; //Flag used in exiting loop
-
-                //Loop used to locate section of XML document that contains the data needed
-                while (!boolean && reader_3.Read())
-                {
-                    if (reader_3.LocalName == "string")
-                    {
-                        boolean = true;
-                        jsonString = reader_3.ReadElementContentAsString();
-                    }
-                }
+                string jsonString = proxy.GetAFStations(zipcodes[count], "ELEC", (Int32)(radMark * dInterval));
+                
 
                 dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
                 var tempStations = layer1.AFStations;
