@@ -15,6 +15,7 @@
         <div style="font-size: 75px; font-weight: bolder; color: #000080">
             <p>
                 Anthony Aletto Assignment 9 TryIt Page
+                <asp:Button ID="btnReturnToDefault" runat="server" Text="Return to Default.aspx" OnClick="btnReturnToDefault_Click" />
             </p>
         </div>
         <div class="col">

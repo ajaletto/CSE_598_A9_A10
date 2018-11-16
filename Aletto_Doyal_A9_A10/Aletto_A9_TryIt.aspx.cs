@@ -120,5 +120,10 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
         }
+
+        protected void btnReturnToDefault_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://webstrar43.fulton.asu.edu/page8/Default.aspx");
+        }
     }
 }
