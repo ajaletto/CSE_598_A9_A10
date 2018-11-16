@@ -42,14 +42,16 @@ namespace Aletto_Doyal_A9_A10
                 {
                     HttpCookie noCookie = new HttpCookie("AD_598");
                     noCookie.Values.Add("SessionId", Session.SessionID);
+                    noCookie.Values.Add("LoggedIn", "False");
                     noCookie.Expires = DateTime.Now.AddDays(1d);
                     Response.Cookies.Add(noCookie);
                 }
                 else
                 {
-                    if(hasCookie.Values.Get("SessionId").ToString() == Session.SessionID)
+                    if(hasCookie.Values.Get("SessionId").ToString() == Session.SessionID 
+                        && hasCookie.Values.Get("LoggedIn").ToString() == "True")
                     {
-                        //Response.Redirect("Main.aspx");
+                        Response.Redirect("Main.aspx");
                     }
 
                 }
@@ -112,7 +114,8 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("SessionId", Session.SessionID);
             cookie.Values.Add("username", UserName);
             cookie.Values.Add("passHash", Hash);
-            cookie.Expires = DateTime.Now.AddDays(1d);
+            cookie.Values.Add("LoggedIn", "True");
+            cookie.Expires = DateTime.Now.AddHours(4);
             Response.Cookies.Add(cookie);
 
             // Load the session Data
