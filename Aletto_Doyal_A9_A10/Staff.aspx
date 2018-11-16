@@ -10,8 +10,8 @@
         <br />
     </h1>
     <hr />
-    <body style="background-image: url('App_Images/Road.jpg')">
-
+    <body style="background-color: #FFFFFF; background-image: url('App_Images/Road.jpg'); ">        
+               
         <div class="row">
 
             <div class="col-lg-6" style="border: 5px solid #C0C0C0; background-color: #1879BA; color: #FFFFFF;">
