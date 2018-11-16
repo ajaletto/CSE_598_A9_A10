@@ -7,6 +7,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
+
+// Roy's Tryit page for the DLL, Global.aspx, and XML function
+// This page was developed by Roy Doyal.
+
 namespace Aletto_Doyal_A9_A10
 {
     public partial class Roy_A9_TryIt : System.Web.UI.Page
@@ -48,9 +52,10 @@ namespace Aletto_Doyal_A9_A10
             doc = XDocument.Load(xmlFullPath);
             bool done = false;
             string sResult = null;
-            while( !done )
+            //while( !done )
             {
-                
+                sResult = doc.ToString();
+                txtXMLResult.Text = sResult;
             }
         }
     }

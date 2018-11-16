@@ -13,6 +13,15 @@ namespace Aletto_Doyal_A9_A10 {
     public partial class Roy_A9_TryIt {
         
         /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        
+        /// <summary>
         /// txtXMLData control.
         /// </summary>
         /// <remarks>
