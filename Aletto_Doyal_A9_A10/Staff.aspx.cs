@@ -11,14 +11,10 @@ using System.Xml;
 
 namespace Aletto_Doyal_A9_A10
 {
-    public partial class Main : System.Web.UI.Page
+    public partial class Staff : System.Web.UI.Page
     {
-        private accessType AccessType;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
             if (Request.Browser.Cookies && !IsPostBack)
             {
                 HttpCookie hasCookie = Request.Cookies["AD_598"];
@@ -29,29 +25,16 @@ namespace Aletto_Doyal_A9_A10
                 else if (hasCookie.Values.Get("SessionId").ToString() != Session.SessionID
                         || hasCookie.Values.Get("LoggedIn").ToString() != "True")
                 {
-                     Response.Redirect("Login.aspx");
+                    Response.Redirect("Login.aspx");
                 }
-            }
-
-            SessionObject obj = (SessionObject)Session["User"];
-            AccessType = obj.Access;
-
-            if (AccessType != accessType.Staff)
-            {
-                btnServiceDirectory.Visible = false;
-            }
-            else
-            {
-                btnServiceDirectory.Visible = true;
             }
         }
 
+        protected void btnServiceDirectory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://webstrar43.fulton.asu.edu/page0/index.html");
+        }
 
-        /// <summary>
-        /// Button actions for getting location information.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void btnGetAltFuelAtLocation_Click(object sender, EventArgs e)
         {
             //Grab location information and radius
@@ -97,7 +80,7 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            coordinate = coordinate.Replace(" ",",");
+            coordinate = coordinate.Replace(" ", ",");
 
             //Key to online service
             string key = "Ainae0P5Jbzp5UAnsKLAwK3hBl6n7APKzsFygH7mSIy9djtUZYEdvkV-2GvxHjoa";
@@ -123,30 +106,28 @@ namespace Aletto_Doyal_A9_A10
             }
 
             //Make url for use in call to fuel service API
-            //url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
+            url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
 
-            AFServices.ServiceClient proxy = new AFServices.ServiceClient();
-            string jsonString = proxy.GetAFStations(fZipcode, "ELEC", Convert.ToInt32(radius));
             //Encodes string for proper format when using as a URL
-            //System.Web.HttpUtility.UrlEncode(url);
+            System.Web.HttpUtility.UrlEncode(url);
 
             //Make call to alt fuel service
-            //string jsonString = Get(url);
+            string jsonString = Get(url);
 
             //Visual studio does not recognize as a json object. 
             //Create a xml read to pull out the json string
-            //XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
-            //boolean = false; //Flag used in exiting loop
+            XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
+            boolean = false; //Flag used in exiting loop
 
-            ////Loop used to locate section of XML document that contains the data needed
-            //while (!boolean && reader_3.Read())
-            //{
-            //    if (reader_3.LocalName == "string")
-            //    {
-            //        boolean = true;
-            //        jsonString = reader_3.ReadElementContentAsString();
-            //    }
-            //}
+            //Loop used to locate section of XML document that contains the data needed
+            while (!boolean && reader_3.Read())
+            {
+                if (reader_3.LocalName == "string")
+                {
+                    boolean = true;
+                    jsonString = reader_3.ReadElementContentAsString();
+                }
+            }
 
             dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
             var tempStations = layer1.AFStations;
@@ -173,37 +154,8 @@ namespace Aletto_Doyal_A9_A10
             }
 
             txtarLocationOutput.InnerText = result;
-        } //End btnGetAltFuelAtLocation_Click
-
-        /// <summary>
-        /// Makes a get call to the specified url
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public static string Get(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
-        } //End Get
-
-        protected void btnServiceDirectory_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Roy_A9_TryIt.aspx");
         }
 
-
-        /// <summary>
-        /// Button actions for getting routing information.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void btnGetAltFuelStationsAlongRoute_Click(object sender, EventArgs e)
         {
             string address_1 = txtbxFromAddressRoute.Text;
@@ -263,9 +215,9 @@ namespace Aletto_Doyal_A9_A10
             string[] coords = coordinates.Split(delims);
 
             //Put a comma between each long and lat pair
-            for(int i = 0; i < coords.Length; i++)
+            for (int i = 0; i < coords.Length; i++)
             {
-                coords[i] = coords[i].Replace(" ",",");
+                coords[i] = coords[i].Replace(" ", ",");
             }
 
             //Make an array to hold the incoming zipcodes
@@ -277,7 +229,7 @@ namespace Aletto_Doyal_A9_A10
             //Make sequential calls for zipcodes
             for (int i = 0; i < coords.Length; i++)
             {
-                
+
                 url = @"http://dev.virtualearth.net/REST/v1/Locations/" + coords[i] + "?o=xml&includeEntityTypes=Postcode1&key=" + key;
 
                 //Encodes string for proper format when using as a URL
@@ -304,13 +256,12 @@ namespace Aletto_Doyal_A9_A10
             double dInterval = 0;
             Double.TryParse(interval, out dInterval);
             string result = String.Empty;
-            AFServices.ServiceClient proxy = new AFServices.ServiceClient();
 
             while (count < zipcodes.Length)
             {
 
                 //Make sure no zipcodes came back null
-                while(zipcodes[count] == null)
+                while (zipcodes[count] == null)
                 {
                     count++;
                 }
@@ -318,31 +269,28 @@ namespace Aletto_Doyal_A9_A10
 
 
                 //Make url for use in call to fuel service API
-                //url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + zipcodes[count] + "&Radius=" + ((Int32)(radMark * dInterval)).ToString()  + "&FuelTypes=ELEC";
-               // url = @" http://localhost:60159/Service.svc/GetAFStations?Zip=" + zipcodes[count] + "&Radius=" + ((Int32)(radMark * dInterval)).ToString() + "&FuelTypes=ELEC"; 
+                url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + zipcodes[count] + "&Radius=" + ((Int32)(radMark * dInterval)).ToString() + "&FuelTypes=ELEC";
+
                 //Encodes string for proper format when using as a URL
-                //System.Web.HttpUtility.UrlEncode(url);
+                System.Web.HttpUtility.UrlEncode(url);
 
                 //Make call to alt fuel service
-               // string jsonString = Get(url);
-
-               // service call.
-                string jsonString = proxy.GetAFStations(zipcodes[count], "ELEC", (Int32)(radMark * dInterval));
+                string jsonString = Get(url);
 
                 //Visual studio does not recognize as a json object. 
                 //Create a xml read to pull out the json string
-                //XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
-                //boolean = false; //Flag used in exiting loop
+                XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
+                boolean = false; //Flag used in exiting loop
 
                 //Loop used to locate section of XML document that contains the data needed
-                //while (!boolean && reader_3.Read())
-                //{
-                //    if (reader_3.LocalName == "string")
-                //    {
-                //        boolean = true;
-                //        jsonString = reader_3.ReadElementContentAsString();
-                //    }
-                //}
+                while (!boolean && reader_3.Read())
+                {
+                    if (reader_3.LocalName == "string")
+                    {
+                        boolean = true;
+                        jsonString = reader_3.ReadElementContentAsString();
+                    }
+                }
 
                 dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
                 var tempStations = layer1.AFStations;
@@ -373,16 +321,33 @@ namespace Aletto_Doyal_A9_A10
                     break;
                 }
 
-                
+
             }
 
             txtarRouteOutput.InnerText += result + "\n";
-
         }
 
         protected void exit_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }
+
+        /// <summary>
+        /// Makes a get call to the specified url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string Get(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        } //End Get
     }
 }
