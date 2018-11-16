@@ -123,28 +123,30 @@ namespace Aletto_Doyal_A9_A10
             }
 
             //Make url for use in call to fuel service API
-            url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
+            //url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
 
+            AFServices.ServiceClient proxy = new AFServices.ServiceClient();
+            string jsonString = proxy.GetAFStations(fZipcode, "ELEC", Convert.ToInt32(radius));
             //Encodes string for proper format when using as a URL
-            System.Web.HttpUtility.UrlEncode(url);
+            //System.Web.HttpUtility.UrlEncode(url);
 
             //Make call to alt fuel service
-            string jsonString = Get(url);
+            //string jsonString = Get(url);
 
             //Visual studio does not recognize as a json object. 
             //Create a xml read to pull out the json string
-            XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
-            boolean = false; //Flag used in exiting loop
+            //XmlReader reader_3 = XmlReader.Create(new StringReader(jsonString));
+            //boolean = false; //Flag used in exiting loop
 
-            //Loop used to locate section of XML document that contains the data needed
-            while (!boolean && reader_3.Read())
-            {
-                if (reader_3.LocalName == "string")
-                {
-                    boolean = true;
-                    jsonString = reader_3.ReadElementContentAsString();
-                }
-            }
+            ////Loop used to locate section of XML document that contains the data needed
+            //while (!boolean && reader_3.Read())
+            //{
+            //    if (reader_3.LocalName == "string")
+            //    {
+            //        boolean = true;
+            //        jsonString = reader_3.ReadElementContentAsString();
+            //    }
+            //}
 
             dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
             var tempStations = layer1.AFStations;
