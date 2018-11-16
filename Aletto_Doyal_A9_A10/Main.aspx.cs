@@ -13,11 +13,45 @@ namespace Aletto_Doyal_A9_A10
 {
     public partial class Main : System.Web.UI.Page
     {
+        private accessType AccessType;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
+            if (Request.Browser.Cookies && !IsPostBack)
+            {
+                HttpCookie hasCookie = Request.Cookies["AD_598"];
+                if ((hasCookie == null) || (hasCookie["Name"] == ""))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else if (hasCookie.Values.Get("SessionId").ToString() != Session.SessionID
+                        || hasCookie.Values.Get("LoggedIn").ToString() != "True")
+                {
+                     Response.Redirect("Login.aspx");
+                }
+            }
+
+            SessionObject obj = (SessionObject)Session["User"];
+            AccessType = obj.Access;
+
+            if (AccessType != accessType.Staff)
+            {
+                btnServiceDirectory.Visible = false;
+            }
+            else
+            {
+                btnServiceDirectory.Visible = true;
+            }
         }
 
+
+        /// <summary>
+        /// Button actions for getting location information.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnGetAltFuelAtLocation_Click(object sender, EventArgs e)
         {
             //Grab location information and radius
@@ -162,6 +196,12 @@ namespace Aletto_Doyal_A9_A10
             Response.Redirect("Roy_A9_TryIt.aspx");
         }
 
+
+        /// <summary>
+        /// Button actions for getting routing information.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnGetAltFuelStationsAlongRoute_Click(object sender, EventArgs e)
         {
             string address_1 = txtbxFromAddressRoute.Text;
@@ -336,6 +376,11 @@ namespace Aletto_Doyal_A9_A10
 
             txtarRouteOutput.InnerText += result + "\n";
 
+        }
+
+        protected void exit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
