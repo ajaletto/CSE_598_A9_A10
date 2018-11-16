@@ -38,9 +38,8 @@
     <hr style="border: 2px solid red;" />
     <h2>Session Data</h2>
         This data was created in the Session_Start() function in Global.asax<br />
-        Session ID:&nbsp; <asp:Label ID="lblSessionID" runat="server" Text="Session ID"></asp:Label><br />
+        Session ID:&nbsp; <asp:Label ID="lblSessionID" runat="server" Text="Session ID"></asp:Label><br /><br />
                 
-        &nbsp;&nbsp;&nbsp;&nbsp;User Name:&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblUser" runat="server" Text="Session User ID"></asp:Label><br />
-        &nbsp;&nbsp;&nbsp;&nbsp;Password Hash:&nbsp;<asp:Label ID="lblPasswd" runat="server" Text="Session Password"></asp:Label><br />
-        &nbsp;&nbsp;&nbsp;&nbsp;Access Type:&nbsp;&nbsp;&nbsp;  <asp:Label ID="lblAccess" runat="server" Text="Session Password"></asp:Label><br />
+        Text from Session Start:&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblUser" runat="server" Text="Session User ID"></asp:Label><br />
+        
 </asp:Content>

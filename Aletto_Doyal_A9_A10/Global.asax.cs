@@ -40,6 +40,7 @@ namespace Aletto_Doyal_A9_A10
             if (Session["Count"] != null)
                 count = (int)Session["Count"];
             Session["Count"] = count + 1;
+            Session["TryIt"] = "This is added at Session Start";
         }
 
         void Session_End(object sender, EventArgs e)

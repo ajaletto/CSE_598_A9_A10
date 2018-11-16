@@ -18,13 +18,7 @@ namespace Aletto_Doyal_A9_A10
         protected void Page_Load(object sender, EventArgs e)
         {
             lblSessionID.Text = Session.SessionID;
-            SessionObject obj = (SessionObject)Session["User"];
-            if (obj.Access == accessType.Member)
-                lblAccess.Text = "Member";
-            else
-                lblAccess.Text = "Staff";
-            lblUser.Text = obj.Name;
-            lblPasswd.Text = obj.Hash;
+            lblUser.Text = (string)Session["TryIt"].ToString();
         }
 
         protected void btnTestDll_Click(object sender, EventArgs e)
