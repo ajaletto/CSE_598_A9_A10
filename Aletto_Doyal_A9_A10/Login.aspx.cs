@@ -91,7 +91,11 @@ namespace Aletto_Doyal_A9_A10
             obj.Name = UserName;
             obj.Hash = Hash;
             Session["User"] = obj;
-            Response.Redirect("Main.aspx");
+
+            if (AccessType == accessType.Staff)
+                Response.Redirect("Staff.aspx");
+            else
+                Response.Redirect("Member.aspx");
         }
 
         protected void btnCreateId_Click(object sender, EventArgs e)
