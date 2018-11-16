@@ -42,6 +42,8 @@ namespace Aletto_Doyal_A9_A10
                 {
                     HttpCookie noCookie = new HttpCookie("AD_598");
                     noCookie.Values.Add("SessionId", Session.SessionID);
+                    noCookie.Values.Add("username", String.Empty);
+                    noCookie.Values.Add("passHash", String.Empty);
                     noCookie.Values.Add("LoggedIn", "False");
                     noCookie.Expires = DateTime.Now.AddDays(1d);
                     Response.Cookies.Add(noCookie);
@@ -49,9 +51,19 @@ namespace Aletto_Doyal_A9_A10
                 else
                 {
                     if(hasCookie.Values.Get("SessionId").ToString() == Session.SessionID 
-                        && hasCookie.Values.Get("LoggedIn").ToString() == "True")
+                        && hasCookie.Values.Get("LoggedIn").ToString() == "True" 
+                        && ValidateUserName(hasCookie.Values.Get("username").ToString(), AccessType)
+                        && ValidateUserPasswrod(hasCookie.Values.Get("username").ToString(), hasCookie.Values.Get("passHash").ToString(), AccessType))
                     {
-                        Response.Redirect("Main.aspx");
+                        // move on to the main page
+                        if (AccessType == accessType.Staff)
+                        {
+                            Response.Redirect("Staff.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("Member.aspx");
+                        }
                     }
 
                 }
@@ -123,7 +135,16 @@ namespace Aletto_Doyal_A9_A10
             obj.Name = UserName;
             obj.Hash = Hash;
             Session["User"] = obj;
-            Response.Redirect("Main.aspx");
+
+            // move on to the main page
+            if (AccessType == accessType.Staff)
+            {
+                Response.Redirect("Staff.aspx");
+            }
+            else
+            {
+                Response.Redirect("Member.aspx");
+            }
         }
 
         protected void btnCreateId_Click(object sender, EventArgs e)
@@ -181,6 +202,7 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("SessionId", Session.SessionID);
             cookie.Values.Add("username", txtId.Text);
             cookie.Values.Add("passHash", Hash);
+            cookie.Values.Add("LoggedIn", "True");
             cookie.Expires = DateTime.Now.AddDays(1d);
             Response.Cookies.Add(cookie);
 
@@ -191,7 +213,15 @@ namespace Aletto_Doyal_A9_A10
             Session["User"] = obj;
 
             // move on to the main page
-            Response.Redirect("Main.aspx");
+            if (AccessType == accessType.Staff)
+            {
+                Response.Redirect("Staff.aspx");
+            }
+            else
+            {
+                Response.Redirect("Member.aspx");
+            }
+            
 
 
         }

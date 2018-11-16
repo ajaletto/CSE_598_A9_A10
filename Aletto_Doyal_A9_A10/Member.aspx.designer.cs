@@ -13,15 +13,6 @@ namespace Aletto_Doyal_A9_A10 {
     public partial class Main {
         
         /// <summary>
-        /// btnServiceDirectory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnServiceDirectory;
-        
-        /// <summary>
         /// lblAddressLocation control.
         /// </summary>
         /// <remarks>

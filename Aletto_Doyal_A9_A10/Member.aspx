@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Main.aspx.cs" Inherits="Aletto_Doyal_A9_A10.Main" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Member.aspx.cs" Inherits="Aletto_Doyal_A9_A10.Main" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -6,8 +6,8 @@
     <head>
         <title>Aletto and Doyal's Alternative Gas Station Lookup Service</title>
     </head>
-    <h1 class="col-lg-12" style="border: 8px ridge #000000; font-family: Bahnschrift; font-size: 75px; font-weight: bolder; color: #00004D; background-color: #13EC80; display: block; text-align: center; " aria-haspopup="False" role="banner">Aletto and Doyal's Alternative Gas Station Lookup Services
-        <asp:Button ID="btnServiceDirectory" runat="server" Text="Service Directory" Font-Size="XX-Large" CssClass="center-block" BorderColor="Black" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Height="100px" OnClick="btnServiceDirectory_Click" />
+    <h1 class="col-lg-12" style="border: 8px ridge #000000; font-family: Bahnschrift; font-size: 75px; font-weight: bolder; color: #00004D; background-color: #13EC80; display: block; text-align: center; " aria-haspopup="False" role="banner">A & D's Alternative Gas Station Lookup Services Member Page
+        
         <br />
     </h1>
     <hr />
