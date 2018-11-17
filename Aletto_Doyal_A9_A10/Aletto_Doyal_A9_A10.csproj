@@ -130,6 +130,7 @@
     <Content Include="App_Images\FuelIcon.jpg" />
     <Content Include="App_Images\greenWallpaper.jpg" />
     <Content Include="App_Images\Road.jpg" />
+    <Content Include="CaptchaUserControl.ascx" />
     <Content Include="Connected Services\AFServices\Aletto_Doyal_A9_A10.AFServices.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -140,7 +141,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="WebUserControl1.ascx" />
     <Content Include="electric-car.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -229,6 +229,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CaptchaUserControl.ascx.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaptchaUserControl.ascx.designer.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\AFServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -292,13 +299,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="WebUserControl1.ascx.cs">
-      <DependentUpon>WebUserControl1.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebUserControl1.ascx.designer.cs">
-      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

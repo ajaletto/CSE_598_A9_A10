@@ -76,48 +76,12 @@ namespace Aletto_Doyal_A9_A10 {
         protected global::System.Web.UI.WebControls.Button btnCookieTryitDelete;
         
         /// <summary>
-        /// ExampleCaptcha control.
+        /// captcha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BotDetect.Web.UI.WebFormsSimpleCaptcha ExampleCaptcha;
-        
-        /// <summary>
-        /// CaptchaCodeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CaptchaCodeTextBox;
-        
-        /// <summary>
-        /// ValidateCaptchaButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ValidateCaptchaButton;
-        
-        /// <summary>
-        /// CaptchaCorrectLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CaptchaCorrectLabel;
-        
-        /// <summary>
-        /// CaptchaIncorrectLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CaptchaIncorrectLabel;
+        protected global::Aletto_Doyal_A9_A10.CaptchaUserControl captcha;
     }
 }
