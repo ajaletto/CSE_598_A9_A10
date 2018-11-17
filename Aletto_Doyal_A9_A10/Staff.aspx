@@ -14,7 +14,7 @@
                
         <div class="row">
 
-            <div class="col-lg-6" style="border: 5px solid #C0C0C0; background-color: #1879BA; color: #FFFFFF;">
+            <div class="col-lg-6" style="height: 589px; border: 5px solid #C0C0C0; background-color: #1879BA; color: #FFFFFF;">
                 <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; color: #000000; font-weight: bold;">Find Alternative Fuel Stations By Location</h2>
                 <p style="font-size: medium; text-align: center;">
                     <asp:Label ID="lblAddressLocation" runat="server" Text="Address:" BorderColor="Black"></asp:Label><br />
@@ -42,7 +42,7 @@
                     <asp:Button ID="btnGetAltFuelAtLocation" runat="server" Text="Get Fuel Stations" ForeColor="Black" OnClick="btnGetAltFuelAtLocation_Click" BorderStyle="Solid" BorderColor="Black" BorderWidth="5" Font-Bold="True" Font-Size="16" />
                 </p>
             </div>
-            <div class="col-lg-6" style="margin: 0px; border: 5px solid #C0C0C0; background-color: #1879BA; color: #FFFFFF; overflow: visible;">
+            <div class="col-lg-6" style="height: 589px; margin: 0px; border: 5px solid #C0C0C0; background-color: #1879BA; color: #FFFFFF; overflow: visible;">
                 <h2 style="border: 7px solid #000000; font-size: 40px; background-color: #808080; text-align: center; font-weight: bold;">Location
                     <br />
                     Output</h2>
