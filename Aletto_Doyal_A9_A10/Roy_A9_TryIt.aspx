@@ -6,8 +6,8 @@
     <div class="jumbotron">
         <h2>Roy Doyal -- Assignment 9 TryIt</h2>
         <p class="lead">Testing Session Data, XML Read/Write, Hashing DLL</p>
-        <p>Return to Index Page :&nbsp;
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://webstrar43.fulton.asu.edu/page0/index.html">http://webstrat43.fulton.asu.edu/page0/index.html</asp:HyperLink>
+        <p>Return to Default Page :&nbsp;
+           <asp:Button ID="btnReturnToDefault" runat="server" Text="Return to Default.aspx" OnClick="btnReturnToDefault_Click" />
         </p>
     </div>
 
@@ -20,7 +20,8 @@
             <p>
                 To Write: &nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtXMLData" runat="server" Width="400px">Type something to save</asp:TextBox><br />
                 Read Back: <asp:TextBox ID="txtXMLResult" runat="server" Width="400px" Height="155px" TextMode="MultiLine">Data Read back will show here</asp:TextBox><br />
-                <br /><asp:Button ID="btnXMLTest" runat="server" Text="Perform XML Validation" OnClick="btnXMLTest_Click" />  
+                <br /><asp:Button ID="btnXMLTest" runat="server" Text="Add to XML File" OnClick="btnXMLTest_Click" /> 
+                <br /><asp:Button ID="btnXMLReset" runat="server" Text="Reset XML File" OnClick="btnXMLReset_Click" />  
             </p>
         </div>
         <div class="col-md-6">

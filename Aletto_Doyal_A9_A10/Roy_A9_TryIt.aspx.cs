@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 using System.Xml.Linq;
 
 
@@ -51,6 +52,44 @@ namespace Aletto_Doyal_A9_A10
                 sResult = doc.ToString();
                 txtXMLResult.Text = sResult;
             }
+        }
+
+        protected void btnXMLReset_Click(object sender, EventArgs e)
+        {
+
+            string xmlFileName = @"App_data\TryIt.xml";
+            //string SearchKey = @"TestStrings";
+            string SearchKey = @"TryIt";
+            string xmlPath = Server.MapPath("~");
+            string sResult = null;
+
+            string xmlFullPath = Path.Combine(xmlPath, xmlFileName);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlFullPath);
+
+            XmlNode root = doc.DocumentElement;
+
+            //Remove all attribute and child nodes.
+            root.RemoveAll();
+
+        
+            doc.Save(xmlFullPath);
+
+            // read and display
+
+            var xdoc = XDocument.Load(xmlFullPath);
+            
+           
+            
+                sResult = xdoc.ToString();
+                txtXMLResult.Text = sResult;
+            
+        }
+
+        protected void btnReturnToDefault_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
