@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="Encryption, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Encryption\obj\Debug\Encryption.dll</HintPath>
+      <HintPath>W:\Page9\Encryption.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

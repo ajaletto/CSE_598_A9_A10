@@ -7,6 +7,13 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
+
+// global.aspx for project.
+// This file was developed by Roy Doyal
+// The session object was designed and developed by Roy Doyal
+// in the session we store the User Name, password hash, and Access level fo the session.
+
+
 namespace Aletto_Doyal_A9_A10
 {
     public class Global : HttpApplication
@@ -23,11 +30,17 @@ namespace Aletto_Doyal_A9_A10
         {
             string indexKey = "User";
             SessionObject obj;
+            int count = 0;
+
             if (Session[indexKey] == null)
             {
                 obj = new SessionObject();
                 Session[indexKey] = obj;
             }
+            if (Session["Count"] != null)
+                count = (int)Session["Count"];
+            Session["Count"] = count + 1;
+            Session["TryIt"] = "This is added at Session Start";
         }
 
         void Session_End(object sender, EventArgs e)

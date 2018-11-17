@@ -9,6 +9,10 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
+// Login page for the Applicatoin
+// Code developed by Roy Doyal.
+// Segments Cookie features added by Tony Aletto
+
 
 namespace Aletto_Doyal_A9_A10
 {
@@ -22,6 +26,7 @@ namespace Aletto_Doyal_A9_A10
         {
             SessionObject obj = (SessionObject)Session["User"];
             AccessType = obj.Access;
+            lbldbg.Visible = false;
 
             if (AccessType == accessType.Staff)
             {
@@ -45,15 +50,17 @@ namespace Aletto_Doyal_A9_A10
                     noCookie.Values.Add("username", String.Empty);
                     noCookie.Values.Add("passHash", String.Empty);
                     noCookie.Values.Add("LoggedIn", "False");
+                    noCookie.Values.Add("Access", String.Empty);
                     noCookie.Expires = DateTime.Now.AddDays(1d);
                     Response.Cookies.Add(noCookie);
                 }
                 else
                 {
-                    if(hasCookie.Values.Get("SessionId").ToString() == Session.SessionID 
-                        && hasCookie.Values.Get("LoggedIn").ToString() == "True" 
+                    if (hasCookie.Values.Get("SessionId").ToString() == Session.SessionID
+                        && hasCookie.Values.Get("LoggedIn").ToString() == "True"
                         && ValidateUserName(hasCookie.Values.Get("username").ToString(), AccessType)
-                        && ValidateUserPasswrod(hasCookie.Values.Get("username").ToString(), hasCookie.Values.Get("passHash").ToString(), AccessType))
+                        && ValidateUserPasswrod(hasCookie.Values.Get("username").ToString(), hasCookie.Values.Get("passHash").ToString(), AccessType)
+                        && (hasCookie.Values.Get("Access").ToString() == AccessType.ToString()) )
                     {
                         // move on to the main page
                         if (AccessType == accessType.Staff)
@@ -89,12 +96,17 @@ namespace Aletto_Doyal_A9_A10
             if (txtPasswd.Text == "")
                 lbldbg.Text += "    No Password Entered";
             if (lbldbg.Text != "")
+            {
+                lbldbg.Visible = true;
                 return;
+            }
+                
 
             // validate captcha
             if (!(lblCaptchaCorrect.Text == "Correct!"))
             {
                 lbldbg.Text = "    Please validate Captcha.";
+                lbldbg.Visible = true;
                 return;
             }
 
@@ -112,12 +124,14 @@ namespace Aletto_Doyal_A9_A10
                 if (!bPasswd)
                 {
                     lbldbg.Text = "INVALID PASSWORD ENTERED... Check spelling and captilization";
+                    lbldbg.Visible = true;
                     return;
                 }
             }
             else
             {
                 lbldbg.Text = "INVALID USER NAME ENTERED... Check spelling and captilization";
+                lbldbg.Visible = true;
                 return;
             }
 
@@ -127,6 +141,7 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("username", UserName);
             cookie.Values.Add("passHash", Hash);
             cookie.Values.Add("LoggedIn", "True");
+            cookie.Values.Add("Access", AccessType.ToString());
             cookie.Expires = DateTime.Now.AddHours(4);
             Response.Cookies.Add(cookie);
 
@@ -135,7 +150,7 @@ namespace Aletto_Doyal_A9_A10
             obj.Name = UserName;
             obj.Hash = Hash;
             Session["User"] = obj;
-
+            
             // move on to the main page
             if (AccessType == accessType.Staff)
             {
@@ -160,12 +175,15 @@ namespace Aletto_Doyal_A9_A10
             if (txtPasswd.Text == "")
                 lbldbg.Text += "    No Password Entered";
             if (lbldbg.Text != "")
+            {
+                lbldbg.Visible = true;
                 return;
-
+            }
             // validate captcha
             if (!(lblCaptchaCorrect.Text == "Correct!"))
             {
                 lbldbg.Text = "    Please validate Captcha.";
+                lbldbg.Visible = true;
                 return;
             }
 
@@ -173,6 +191,7 @@ namespace Aletto_Doyal_A9_A10
             if (ValidateUserName(txtId.Text, AccessType))
             {
                 lbldbg.Text = "USER ID Already exists... Please enter a new User Id";
+                lbldbg.Visible = true;
                 return;
             }
 
