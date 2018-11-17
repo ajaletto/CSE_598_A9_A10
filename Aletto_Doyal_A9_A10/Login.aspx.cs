@@ -85,9 +85,12 @@ namespace Aletto_Doyal_A9_A10
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             // Steps for login...
-            // 1) verify the User Name
-            // 2) Verify Password
-            // 3) Set credentials in the Session and redirect to main page
+            // 1) verify captcha
+            // 2) verify the User Name
+            // 3) Verify Password
+            // 4) Set credentials in the Session and redirect to main page
+
+            Label capLbl = (Label)captcha.FindControl("CaptchaCorrectLabel");
 
             // validate all fields are populated
             lbldbg.Text = "";
@@ -103,7 +106,7 @@ namespace Aletto_Doyal_A9_A10
                 
 
             // validate captcha
-            if (!(lblCaptchaCorrect.Text == "Correct!"))
+            if (capLbl.Text != "Correct!")
             {
                 lbldbg.Text = "    Please validate Captcha.";
                 lbldbg.Visible = true;
@@ -169,6 +172,8 @@ namespace Aletto_Doyal_A9_A10
             // 2) add credentials to the members xml file
             // set credentials in teh Session and redirect to Main Page
             // validate all fields are populated
+
+
             lbldbg.Text = "";
             if (txtId.Text == "")
                 lbldbg.Text = "    No User Name Entered";
@@ -180,7 +185,8 @@ namespace Aletto_Doyal_A9_A10
                 return;
             }
             // validate captcha
-            if (!(lblCaptchaCorrect.Text == "Correct!"))
+            Label capLbl = (Label)captcha.FindControl("CaptchaCorrectLabel");
+            if (capLbl.Text != "Correct!")
             {
                 lbldbg.Text = "    Please validate Captcha.";
                 lbldbg.Visible = true;
@@ -222,6 +228,7 @@ namespace Aletto_Doyal_A9_A10
             cookie.Values.Add("username", txtId.Text);
             cookie.Values.Add("passHash", Hash);
             cookie.Values.Add("LoggedIn", "True");
+            cookie.Values.Add("Access", AccessType.ToString());
             cookie.Expires = DateTime.Now.AddDays(1d);
             Response.Cookies.Add(cookie);
 
@@ -331,40 +338,6 @@ namespace Aletto_Doyal_A9_A10
             }
 
             return result;
-        }
-
-        protected void ValidateCaptchaButton_Click(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                // initialize the Captcha validation error label
-                lblCaptchaCorrect.Text = "Incorrect CAPTCHA code!";
-                lblCaptchaIncorrect.Visible = true;
-            }
-
-
-
-
-            if (IsPostBack)
-            {
-                // validate the Captcha to check we're not dealing with a bot
-                string userInput = txtCaptcha.Text;
-                bool isHuman = ExampleCaptcha.Validate(userInput);
-                txtCaptcha.Text = null; // clear previous user input
-
-                if (isHuman)
-                {
-                    lblCaptchaCorrect.Visible = true;
-                    lblCaptchaIncorrect.Visible = false;
-                    lblCaptchaCorrect.Text = "Correct!";
-                }
-                else
-                {
-                    lblCaptchaIncorrect.Visible = true;
-                    lblCaptchaCorrect.Visible = false;
-                    lblCaptchaIncorrect.Text = "Incorrect!";
-                }
-            }
         }
     }
 }

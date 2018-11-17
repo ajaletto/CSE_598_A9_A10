@@ -49,49 +49,13 @@ namespace Aletto_Doyal_A9_A10 {
         protected global::System.Web.UI.WebControls.TextBox txtPasswd;
         
         /// <summary>
-        /// ExampleCaptcha control.
+        /// captcha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BotDetect.Web.UI.WebFormsSimpleCaptcha ExampleCaptcha;
-        
-        /// <summary>
-        /// txtCaptcha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCaptcha;
-        
-        /// <summary>
-        /// ValidateCaptchaButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ValidateCaptchaButton;
-        
-        /// <summary>
-        /// lblCaptchaCorrect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCaptchaCorrect;
-        
-        /// <summary>
-        /// lblCaptchaIncorrect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCaptchaIncorrect;
+        protected global::Aletto_Doyal_A9_A10.CaptchaUserControl captcha;
         
         /// <summary>
         /// btnLogin control.

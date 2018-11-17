@@ -35,7 +35,9 @@ namespace Aletto_Doyal_A9_A10
 
         protected void btnCookieTryitAdd_Click(object sender, EventArgs e)
         {
-            if (CaptchaCorrectLabel.Text == "Correct!")
+            Label capLbl = (Label)captcha.FindControl("CaptchaCorrectLabel");
+
+            if (capLbl.Text == "Correct!")
             {
                 HttpCookie myCookies = new HttpCookie("alettoTryIt");
                 if (String.IsNullOrWhiteSpace(txtbxCookieTryitInput.Text))
@@ -65,7 +67,9 @@ namespace Aletto_Doyal_A9_A10
 
         protected void btnCookieTryitDelete_Click(object sender, EventArgs e)
         {
-            if (CaptchaCorrectLabel.Text == "Correct!")
+            Label capLbl = (Label)captcha.FindControl("CaptchaCorrectLabel");
+
+            if (capLbl.Text == "Correct!")
             {
                 HttpCookie myCookie = Request.Cookies["alettoTryIt"];
                 if ((myCookie == null) || (myCookie["Name"] == ""))
@@ -87,43 +91,9 @@ namespace Aletto_Doyal_A9_A10
             }
         }
 
-        protected void ValidateCaptchaButton_Click(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                // initialize the Captcha validation error label
-                CaptchaIncorrectLabel.Text = "Incorrect CAPTCHA code!";
-                CaptchaIncorrectLabel.Visible = true;
-            }
-
-
-
-
-            if (IsPostBack)
-            {
-                // validate the Captcha to check we're not dealing with a bot
-                string userInput = CaptchaCodeTextBox.Text;
-                bool isHuman = ExampleCaptcha.Validate(userInput);
-                CaptchaCodeTextBox.Text = null; // clear previous user input
-
-                if (isHuman)
-                {
-                    CaptchaCorrectLabel.Visible = true;
-                    CaptchaIncorrectLabel.Visible = false;
-                    CaptchaCorrectLabel.Text = "Correct!";
-                }
-                else
-                {
-                    CaptchaIncorrectLabel.Visible = true;
-                    CaptchaCorrectLabel.Visible = false;
-                    CaptchaIncorrectLabel.Text = "Incorrect!";
-                }
-            }
-        }
-
         protected void btnReturnToDefault_Click(object sender, EventArgs e)
         {
-            Response.Redirect("http://webstrar43.fulton.asu.edu/page8/Default.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }

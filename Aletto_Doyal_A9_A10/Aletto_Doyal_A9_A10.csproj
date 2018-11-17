@@ -130,6 +130,7 @@
     <Content Include="App_Images\FuelIcon.jpg" />
     <Content Include="App_Images\greenWallpaper.jpg" />
     <Content Include="App_Images\Road.jpg" />
+    <Content Include="CaptchaUserControl.ascx" />
     <Content Include="Connected Services\AFServices\Aletto_Doyal_A9_A10.AFServices.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -228,6 +229,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CaptchaUserControl.ascx.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaptchaUserControl.ascx.designer.cs">
+      <DependentUpon>CaptchaUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\AFServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
