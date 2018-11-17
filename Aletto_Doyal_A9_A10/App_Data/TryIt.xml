@@ -11,4 +11,16 @@
   <TestStrings>
     <Tests>t</Tests>
   </TestStrings>
+  <TestStrings>
+    <Tests>test</Tests>
+  </TestStrings>
+  <TestStrings>
+    <Tests>teste</Tests>
+  </TestStrings>
+  <TestStrings>
+    <Tests>1</Tests>
+  </TestStrings>
+  <TestStrings>
+    <Tests>afsafsd</Tests>
+  </TestStrings>
 </TryIt>
