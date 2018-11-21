@@ -9,41 +9,36 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 
-// Members Page of the Application
-// This page was develpoed by Tony Aletto
 
+// Staff Page for project
+// This page was developed by Tony Aletto
 
 namespace Aletto_Doyal_A9_A10
 {
-    public partial class Main : System.Web.UI.Page
+    public partial class Staff : System.Web.UI.Page
     {
-        private accessType AccessType;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
             if (Request.Browser.Cookies && !IsPostBack)
             {
                 HttpCookie hasCookie = Request.Cookies["AD_598"];
                 if ((hasCookie == null) || (hasCookie["Name"] == ""))
                 {
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("../Login.aspx");
                 }
                 else if (hasCookie.Values.Get("SessionId").ToString() != Session.SessionID
                         || hasCookie.Values.Get("LoggedIn").ToString() != "True")
                 {
-                     Response.Redirect("Login.aspx");
+                    Response.Redirect("../Login.aspx");
                 }
             }
         }
 
+        protected void btnServiceDirectory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://webstrar43.fulton.asu.edu/page0/index.html");
+        }
 
-        /// <summary>
-        /// Button actions for getting location information.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void btnGetAltFuelAtLocation_Click(object sender, EventArgs e)
         {
             //Grab location information and radius
@@ -89,7 +84,7 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            coordinate = coordinate.Replace(" ",",");
+            coordinate = coordinate.Replace(" ", ",");
 
             //Key to online service
             string key = "Ainae0P5Jbzp5UAnsKLAwK3hBl6n7APKzsFygH7mSIy9djtUZYEdvkV-2GvxHjoa";
@@ -114,12 +109,9 @@ namespace Aletto_Doyal_A9_A10
                 }
             }
 
-            //Make url for use in call to fuel service API
-            //url = @"http://webstrar43.fulton.asu.edu/page3/Service.svc/GetAFStations?Zip=" + fZipcode + "&Radius=" + radius + "&FuelTypes=ELEC";
-
             AFServices.ServiceClient proxy = new AFServices.ServiceClient();
             string jsonString = proxy.GetAFStations(fZipcode, "ELEC", Convert.ToInt32(radius));
-            
+
 
             dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
             var tempStations = layer1.AFStations;
@@ -146,32 +138,8 @@ namespace Aletto_Doyal_A9_A10
             }
 
             txtarLocationOutput.InnerText = result;
-        } //End btnGetAltFuelAtLocation_Click
+        }
 
-        /// <summary>
-        /// Makes a get call to the specified url
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public static string Get(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
-        } //End Get
-
-
-        /// <summary>
-        /// Button actions for getting routing information.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void btnGetAltFuelStationsAlongRoute_Click(object sender, EventArgs e)
         {
             string address_1 = txtbxFromAddressRoute.Text;
@@ -231,9 +199,9 @@ namespace Aletto_Doyal_A9_A10
             string[] coords = coordinates.Split(delims);
 
             //Put a comma between each long and lat pair
-            for(int i = 0; i < coords.Length; i++)
+            for (int i = 0; i < coords.Length; i++)
             {
-                coords[i] = coords[i].Replace(" ",",");
+                coords[i] = coords[i].Replace(" ", ",");
             }
 
             //Make an array to hold the incoming zipcodes
@@ -245,7 +213,7 @@ namespace Aletto_Doyal_A9_A10
             //Make sequential calls for zipcodes
             for (int i = 0; i < coords.Length; i++)
             {
-                
+
                 url = @"http://dev.virtualearth.net/REST/v1/Locations/" + coords[i] + "?o=xml&includeEntityTypes=Postcode1&key=" + key;
 
                 //Encodes string for proper format when using as a URL
@@ -274,18 +242,18 @@ namespace Aletto_Doyal_A9_A10
             string result = String.Empty;
             AFServices.ServiceClient proxy = new AFServices.ServiceClient();
 
+
             while (count < zipcodes.Length)
             {
 
                 //Make sure no zipcodes came back null
-                while(zipcodes[count] == null)
+                while (zipcodes[count] == null)
                 {
                     count++;
                 }
 
-
                 string jsonString = proxy.GetAFStations(zipcodes[count], "ELEC", (Int32)(radMark * dInterval));
-
+                
 
                 dynamic layer1 = JsonConvert.DeserializeObject(jsonString);
                 var tempStations = layer1.AFStations;
@@ -316,16 +284,33 @@ namespace Aletto_Doyal_A9_A10
                     break;
                 }
 
-                
+
             }
 
             txtarRouteOutput.InnerText += result + "\n";
-
         }
 
         protected void exit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("../Default.aspx");
         }
+
+        /// <summary>
+        /// Makes a get call to the specified url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string Get(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        } //End Get
     }
 }

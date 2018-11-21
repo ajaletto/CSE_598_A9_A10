@@ -65,11 +65,11 @@ namespace Aletto_Doyal_A9_A10
                         // move on to the main page
                         if (AccessType == accessType.Staff)
                         {
-                            Response.Redirect("Staff.aspx");
+                            Response.Redirect("Private/Staff.aspx");
                         }
                         else
                         {
-                            Response.Redirect("Member.aspx");
+                            Response.Redirect("Member/Member.aspx");
                         }
                     }
 
@@ -157,11 +157,11 @@ namespace Aletto_Doyal_A9_A10
             // move on to the main page
             if (AccessType == accessType.Staff)
             {
-                Response.Redirect("Staff.aspx");
+                Response.Redirect("Private/Staff.aspx");
             }
             else
             {
-                Response.Redirect("Member.aspx");
+                Response.Redirect("Member/Member.aspx");
             }
         }
 
@@ -241,11 +241,11 @@ namespace Aletto_Doyal_A9_A10
             // move on to the main page
             if (AccessType == accessType.Staff)
             {
-                Response.Redirect("Staff.aspx");
+                Response.Redirect("Private/Staff.aspx");
             }
             else
             {
-                Response.Redirect("Member.aspx");
+                Response.Redirect("Member/Member.aspx");
             }
             
 
